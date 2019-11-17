@@ -8,4 +8,4 @@ You can use the function in following way:
 add_lazy nvm_init nvm npm node gulp yarn
 add_lazy sdk_init sdk gradle java
 ```
-First argument is the same of the initialization function followed by list of entrypoitns.
+First argument is the name of the initialization function followed by list of entrypoitns.
