@@ -11,9 +11,9 @@ add_lazy() {
         entrypoint_group_mapping["${entrypoint}"]=$(join_by , $entrypoints) # create mapping command -> command group where commands are separated by ,
         entrypoint_init_mapping["${entrypoint}"]=$function_name # create mapping command -> init function
         $entrypoint() { # declare function for each command
-            local command_group=$entrypoint_group_mapping["${0}"]
-            commands=(); while read -rd,; do commands+=("$REPLY"); done <<<"$command_group,"; # Split commands to arrays
-            for command in $commands ; do 
+            local group=$entrypoint_group_mapping["${0}"]
+            a=(); while read -rd,; do a+=("$REPLY"); done <<<"$group,"; # Split commands to arrays
+            for command in $a ; do 
                 unset -f $command # each commanf from group must be unset so the pre-function is not initiated again
             done
             $entrypoint_init_mapping["${0}"] # launch the init funnction
