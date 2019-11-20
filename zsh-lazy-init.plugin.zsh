@@ -18,6 +18,7 @@ add_lazy() {
             done
             $entrypoint_init_mapping["${0}"] # launch the init funnction
             $0 $@
+            return $?
         }
     done
 }
